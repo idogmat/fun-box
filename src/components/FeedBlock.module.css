@@ -103,6 +103,9 @@
     font-size: 16px;
     color: #666666;
 }
+div .question{
+    color: #e52e7a;
+}
 .cardTitle{
     font-size: 48px;
     color: #000;
@@ -116,6 +119,7 @@
 .cardGift{
     font-size: 14px;
     color: #666666;
+    width: 50%;
 }
 
 .sizeBlock{
@@ -173,10 +177,13 @@ background:#1698d9 ;
     color: white;
 }
 .lowSection{
+    display: flex;
+    justify-content: center;
     color:white;
     font-size: 13px;
     line-height: 16px;
 }
+
 .spanBuy{
     color: #1698d9;
     border-bottom: 1px #1698d9 dashed;
@@ -184,16 +191,11 @@ background:#1698d9 ;
 .spanBuyOff{
     display: none;
 }
-/*.catCard:before{*/
-/*    content: '';*/
-/*    position: absolute;*/
-/*    width: 1100%;*/
-/*    height: 1100%;*/
-/*    top: 150%;*/
-/*    left: -810%;*/
-/*    background: rgba(255,255,255,1);*/
-/*    transform-origin: 54% 0;*/
-/*    transform: rotate(316deg);*/
-/*    border: 4px solid red;*/
+.lowSectionDisable{
+    display: flex;
+    justify-content: center;
+    color: #ffff66;
+    font-size: 13px;
+    line-height: 16px;
+}
 
-/*}*/

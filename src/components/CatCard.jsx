@@ -46,10 +46,10 @@ class CatCard extends React.Component{
                  onClick={!this.state.disableCard ? this.decrement : ''}>
                 <div className={!this.state.disableCard ? f.catCard : f.catCardDisable} style={{backgroundImage: `url(${cat})`}}>
                     <div className={f.cardInfo}>
-                        <span>Сказочное заморское явство</span>
+                        {this.state.clickOnCard ? <span className={f.question}>Котэ не одобряет?</span> : <span>Сказочное заморское явство</span>}
                         <p className={f.cardTitle}>Нямушка</p>
                         <p className={f.withItem}>{this.props.service}</p>
-                        <p className={f.cardGift}>{this.props.portion} порций <br/>{this.props.gift} в подарок</p>
+                        <p className={f.cardGift}>{this.props.portion}<br/>{this.props.gift}</p>
                     </div>
                     <div className={f.sizeBlock}>
                         <div className={!this.state.disableCard ? f.cardSize : f.cardSizeDisable}>
@@ -60,7 +60,8 @@ class CatCard extends React.Component{
                 </div>
             </div>
             {this.state.clickOnCard & !this.state.disableCard ?
-                <p className={f.lowSection}>{this.props.lowMsgSelected} </p> : <p className={f.lowSection}>
+                <p className={f.lowSection}>{this.props.lowMsgSelected} </p> :
+                <p className={!this.state.clickOnCard & !this.state.disableCard ? f.lowSection : f.lowSectionDisable}>
                     {!this.state.clickOnCard & !this.state.disableCard ? this.props.lowMsgDef : this.props.lowMsgDisable}
                 <span className={!this.state.clickOnCard & !this.state.disableCard ? f.spanBuy : f.spanBuyOff}> купи.</span></p>}
             <p className={f.lowSection}>Остаток: {this.props.onStore}</p>
