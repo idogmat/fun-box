@@ -8,6 +8,7 @@ const FeedBlock =(props)=>{
                          portion={f.portion} gift={f.gift}
                          onStore={f.onStore} size={f.size}
                          lowMsgDef={f.lowMsgDef} minCounter={props.minCounter}
+                         lowMsgSelected={f.lowMsgSelected} lowMsgDisable={f.lowMsgDisable}
         />);
 
     return(<div className={f.feedBlock}>

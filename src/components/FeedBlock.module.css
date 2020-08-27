@@ -8,12 +8,15 @@
     display: flex;
     justify-content: center;
     color: white;
+    font-size: 36px;
+    font-weight: normal;
 }
 .feedBlock{
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: space-around;
 }
+
 .catCardContainer{
     position: relative;
     width: 320px;
@@ -25,7 +28,13 @@
     clip-path: polygon(50px 0, 100% 0, 100% 100%, 0 100%, 0 50px);
     box-sizing: border-box;
 }
-.catCardContainerHover{
+.default {
+    opacity: .95;
+}
+.default:hover {
+    opacity: 1;
+}
+.selected .catCardContainer{
     position: relative;
     width: 320px;
     height: 480px;
@@ -87,6 +96,7 @@
 .cardInfo{
     display: flex;
     flex-flow: column nowrap;
+    padding-top: 10px;
 
 }
 .cardInfo span{
@@ -101,6 +111,7 @@
 .withItem{
     font-size: 24px;
     color: #000;
+    margin: 0;
 }
 .cardGift{
     font-size: 14px;
@@ -120,6 +131,25 @@ display: flex;
     flex-flow: column nowrap;
     justify-content: center;
 }
+.selected .catCardContainer .cardSize{
+    background:#d91667 ;
+    border-radius: 100px;
+    height: 80px;
+    width: 80px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+.default:hover .cardSize{
+    background:#1698d9 ;
+    border-radius: 100px;
+    height: 80px;
+    width: 80px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    opacity: 1;
+}
 .cardSize{
 background:#1698d9 ;
     border-radius: 100px;
@@ -128,6 +158,7 @@ background:#1698d9 ;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
+    opacity: .8;
 }
 .valueSize{
     font-size: 42px;
@@ -143,6 +174,15 @@ background:#1698d9 ;
 }
 .lowSection{
     color:white;
+    font-size: 13px;
+    line-height: 16px;
+}
+.spanBuy{
+    color: #1698d9;
+    border-bottom: 1px #1698d9 dashed;
+}
+.spanBuyOff{
+    display: none;
 }
 /*.catCard:before{*/
 /*    content: '';*/

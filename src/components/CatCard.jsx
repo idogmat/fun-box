@@ -6,31 +6,43 @@ class CatCard extends React.Component{
         super(props)
         this.state={
             disableCard:false,
-            hoverOnCard:false
+            clickOnCard:false
+
         }
     }
 
     decrement = () => {
         if(this.props.onStore!==0) {
-            console.log('ok')
+            console.log(this.state.clickOnCard & this.state.disableCard)
             this.props.minCounter(this.props.id - 1)
             this.forceUpdate()
         }else{
-            this.state.disableCard=true
+            this.setState({disableCard: true})
             this.forceUpdate()
         }
     }
-    hoverEnter=()=>{
-        this.state.hoverOnCard=true
+    mouseEnter=()=>{
+        if(this.props.onStore !== 0) {
+            this.setState({clickOnCard: true})
+            this.forceUpdate()
+        } else if(this.props.onStore === 1){
+            this.setState({clickOnCard: true})
+            this.setState({disableCard: true})
+            this.forceUpdate()
+        }
     }
-    hoverLeave=()=>{
-        this.state.hoverOnCard=false
+    mouseLeave=()=>{
+        if(this.props.onStore !==0 ) {
+            this.setState({clickOnCard: false})
+            this.forceUpdate()
+        }
     }
     render() {
-        return (<div>
-            <div className={!this.state.disableCard ? f.catCardContainer : f.catCardContainerDisable}
-                 onMouseLeave={this.hoverLeave}
-                 onMouseEnter={this.hoverEnter}
+        return (<div className={this.state.clickOnCard ? f.selected : f.default}>
+            <div className={!this.state.disableCard ? f.catCardContainer : f.catCardContainerDisable
+            }
+                 onMouseUp={this.mouseLeave}
+                 onMouseDown={this.mouseEnter}
                  onClick={!this.state.disableCard ? this.decrement : ''}>
                 <div className={!this.state.disableCard ? f.catCard : f.catCardDisable} style={{backgroundImage: `url(${cat})`}}>
                     <div className={f.cardInfo}>
@@ -47,7 +59,10 @@ class CatCard extends React.Component{
                     </div>
                 </div>
             </div>
-            <p className={f.lowSection}>{this.props.lowMsgDef} <span>купи.</span></p>
+            {this.state.clickOnCard & !this.state.disableCard ?
+                <p className={f.lowSection}>{this.props.lowMsgSelected} </p> : <p className={f.lowSection}>
+                    {!this.state.clickOnCard & !this.state.disableCard ? this.props.lowMsgDef : this.props.lowMsgDisable}
+                <span className={!this.state.clickOnCard & !this.state.disableCard ? f.spanBuy : f.spanBuyOff}> купи.</span></p>}
             <p className={f.lowSection}>Остаток: {this.props.onStore}</p>
         </div>)
     }
