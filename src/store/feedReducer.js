@@ -1,0 +1,35 @@
+const GET_ITEMS = 'GET_ITEMS';
+let initialState = {
+    feeds: [
+        {
+            id: '1', size: '0,5', service: 'с Фуа-Гра', portion: '10', gift: 'мышь', onStore: '5'
+            , lowMsgDef: 'Чего сидишь? Порадуй котэ,', lowMsgSelected: 'Печень утки разварная с артишоками.'
+        },
+        {
+            id: '2', size: '2', service: 'с рыбой', portion: '40', gift: '2 мыши', onStore: '5'
+            , lowMsgDef: 'Чего сидишь? Порадуй котэ,', lowMsgSelected: 'Головы щучьи с чесноком да свежайшая сёмгушка.'
+        },
+        {
+            id: '3', size: '5', service: 'с курой', portion: '100', gift: '5 мышей', onStore: '5'
+            , lowMsgDef: 'Чего сидишь? Порадуй котэ,', lowMsgSelected: 'Филе из цыплят с трюфелями в бульоне.'
+        }
+    ]
+};
+const feedReducer = (state = initialState, action) => {
+
+    switch (action.type) {
+        case GET_ITEMS:
+            let stateCopy = {...state};
+            stateCopy.feeds = [...state.feeds];
+            stateCopy.feeds[action.elementId].onStore = stateCopy.feeds[action.elementId].onStore - 1;
+            return stateCopy;
+
+        default:
+            return state;
+
+    }
+}
+export const dispatchMinCounter = (elementId) => {
+    return ({type:GET_ITEMS, elementId})
+}
+export default feedReducer;
